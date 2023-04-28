@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+
+  <body>
+    <div class="top">
+      <h1><a href="/">BOOK LOGGER</a></h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/account">My Account</a>
+        <form action="/logout" method="POST">
+          <button type="submit" class="button logout">Logout</button>
+        </form>
+      </nav>
+    </div>
+    <h2>Edit Book</h2>
+
+    <form
+      action="/books/<%= book._id %>?_method=PUT"
+      method="POST"
+      class="wrapper"
+    >
+      <div class="form-input">
+        <label for="title">Book Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value="<%= book.title %>"
+          class="text-input"
+        />
+      </div>
+      <div class="form-input">
+        <label for="author">Book Author</label>
+        <input
+          type="text"
+          name="author"
+          id="author"
+          value="<%= book.author %>"
+          class="text-input"
+        />
+      </div>
+      <div class="form-input">
+        <label for="category">Genre/Theme</label>
+        <input
+          type="text"
+          name="category"
+          id="category"
+          value="<%= book.category.join(' ') %>"
+          class="text-input"
+        />
+      </div>
+      <div class="form-input">
+        <label for="want">Want to read</label>
+        <% if (book.status === "want") { %>
+        <input type="radio" name="status" id="want" value="want" checked />
+        <% } else { %>
+        <input type="radio" name="status" id="want" value="want" />
+        <% } %>
+      </div>
+
+      <div class="form-input">
+        <label for="current">Currently reading</label>
+        <% if (book.status === "current") { %>
+        <input
+          type="radio"
+          name="status"
+          id="current"
+          value="current"
+          checked
+        />
+        <% } else { %>
+        <input type="radio" name="status" id="current" value="current" />
+        <% } %>
+      </div>
+      <div class="form-input">
+        <label for="has">Has read</label>
+        <% if (book.status === "has") { %>
+        <input type="radio" name="status" id="has" value="has" checked />
+        <% } else { %>
+        <input type="radio" name="status" id="has" value="has" />
+        <% } %>
+      </div>
+
+      <button type="submit" class="button">Edit</button>
+    </form>
+  </body>
+</html>

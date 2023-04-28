@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+
+  <body>
+    <div class="top">
+      <h1><a href="/">BOOK LOGGER</a></h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/account">My Account</a>
+        <form action="/logout" method="POST">
+          <button type="submit" class="button logout">Logout</button>
+        </form>
+      </nav>
+    </div>
+    <h2>Welcome, <%= name %>!</h2>
+    <h3>My books</h3>
+    <a href="/books/new" class="button add">Add Book</a>
+    <div class="books-container">
+      <% if (books.length > 0) { %> <% books.forEach((book, index) => { %> <% if
+      (book !== null) { %>
+      <div class="book">
+        <div>
+          <% if (book.status === 'want') { %>
+          <p class="tag want-to-read">Want to read</p>
+          <% } else if (book.status === 'current') { %>
+          <p class="tag currently-reading">Currently reading</p>
+          <% } else { %>
+          <p class="tag has-read">Has read</p>
+          <% } %>
+          <p class="book-title"><%= book.title %></p>
+          <p class="book-author"><%= book.author %></p>
+          <div class="categories">
+            <p><%= categories[index] %></p>
+          </div>
+        </div>
+        <div class="button-group">
+          <a href="/books/<%= book._id %>" class="button edit">Edit</a>
+
+          <form action="/books/<%= book._id %>?_method=DELETE" method="POST">
+            <button class="button delete">Delete</button>
+          </form>
+        </div>
+      </div>
+      <% } %> <% }) %> <% } else { %>
+      <p>No books added</p>
+      <% } %>
+    </div>
+  </body>
+</html>

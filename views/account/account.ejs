@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+
+  <body>
+    <div class="top">
+      <h1><a href="/">BOOK LOGGER</a></h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/account">My Account</a>
+        <form action="/logout" method="POST">
+          <button type="submit" class="button logout">Logout</button>
+        </form>
+      </nav>
+    </div>
+
+    <h2><%= user.name %></h2>
+    <div class="wrapper">
+      <div class="statistics">
+        <h3>Statistics</h3>
+        <p>
+          Books want to read: <%= books.filter(book => book.status ===
+          "want").length %>
+        </p>
+        <p>
+          Books currently reading: <%= books.filter(book => book.status ===
+          "current").length %>
+        </p>
+        <p>
+          Books read: <%= books.filter(book => book.status === "has").length %>
+        </p>
+        <p>Total books : <%= books.length %></p>
+      </div>
+    </div>
+    <a href="/account/edit" class="button edit account-button">Edit Account</a>
+    <form action="/account/<%= user._id %>?_method=DELETE" method="POST">
+      <button class="button delete account-button">Delete Account</button>
+    </form>
+  </body>
+</html>

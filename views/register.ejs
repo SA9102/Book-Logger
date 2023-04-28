@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+
+  <body>
+    <div class="top">
+      <h1><a href="/">BOOK LOGGER</a></h1>
+      <nav>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </nav>
+    </div>
+    <h2>Register</h2>
+    <% if (errorMsg) { %>
+    <p class="error-msg"><%= errorMsg %></p>
+    <% } %>
+    <form action="/register" method="POST" class="wrapper">
+      <div class="form-input">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" class="text-input" />
+      </div>
+      <div class="form-input">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" class="text-input" />
+      </div>
+      <div class="password-info">
+        <p>Password criteria:</p>
+        <ul>
+          <li>Contains at leat 8 characters</li>
+          <li>Contains at least one number</li>
+          <li>Contains at least one special symbol</li>
+          <li>Contains at least one uppercase letter</li>
+          <li>Contains at least one lowercase letter</li>
+          <li>Cannot contain whitespaces</li>
+        </ul>
+      </div>
+      <div class="form-input">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="text-input"
+        />
+      </div>
+      <div class="form-input">
+        <label for="conpass">Confirm Password</label>
+        <input type="password" name="conpass" id="conpass" class="text-input" />
+      </div>
+      <button type="submit" class="button register">Register</button>
+    </form>
+  </body>
+</html>
