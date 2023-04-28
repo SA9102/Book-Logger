@@ -11,7 +11,7 @@ How to quickly get this project running locally:
 First, clone this repository:
 
 ```
-git clone [...]
+git clone https://github.com/SA9102/Book-Logger.git
 ```
 
 Then, navigate to the 'Book Logger' directory, install the required dependencies, and start the node server:
