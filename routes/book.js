@@ -17,7 +17,6 @@ router.get("/new", (req, res) => {
 
 // Adding a book
 router.post("/new", checkAuthenticated, async (req, res) => {
-  console.log(req.body.book);
   try {
     await Book.create({
       title: req.body.title,
@@ -76,19 +75,18 @@ router.put("/:id", checkAuthenticated, async (req, res) => {
 // Deleting a book entry
 router.delete("/:id", checkAuthenticated, async (req, res) => {
   try {
+    // First we delete the actual book from the database
     await Book.findByIdAndDelete(req.params.id);
     const newBooks = req.user.books.filter(
-      (id) => id.toString() !== req.params.id
+      (id) => id.toString() !== req.params.id.toString()
     );
-    const user = await User.findById(req.params.id);
+    console.log(newBooks)
+    // Then we update the user's 'book' field to remove the book
+    // that has been deleted
+    const user = await User.findById(req.user._id);
     user.books = newBooks;
-    user
-      .save()
-      .then(() => res.redirect("/"))
-      .catch((err) => {
-        console.error(err);
-        res.redirect("/");
-      });
+    user.save()
+    res.redirect('/')
   } catch (err) {
     console.error(err);
     res.redirect("/");

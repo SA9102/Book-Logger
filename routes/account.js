@@ -17,6 +17,7 @@ router.get("/", checkAuthenticated, async (req, res) => {
   for (let i = 0; i < req.user.books.length; i++) {
     try {
       const book = await Book.findById(req.user.books[i]);
+      console.log('OK', book)
       books.push(book);
     } catch (err) {
       console.error(err);

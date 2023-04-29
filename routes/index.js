@@ -1,6 +1,7 @@
 // NPM Packages
 const express = require("express");
 const passport = require("passport");
+const bcrypt = require('bcrypt')
 
 // Models
 const User = require("../models/user");
@@ -66,14 +67,14 @@ router.post("/register", async (req, res) => {
     // If the password does not match the given criteria.
     // Credit for regex: Srinivas from StackOverflow
     // (https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a)
-    const regex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g;
-    if (!regex.test(req.body.password)) {
-      return res.render("register", {
-        title: "Register",
-        errorMsg: "Password must fulfill all criteria.",
-      });
-    }
+    // const regex =
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g;
+    // if (!regex.test(req.body.password)) {
+    //   return res.render("register", {
+    //     title: "Register",
+    //     errorMsg: "Password must fulfill all criteria.",
+    //   });
+    // }
     // If the entered password and confirm password do not match
     if (req.body.password !== req.body.conpass) {
       return res.render("register", {
