@@ -4,26 +4,6 @@ A simple application for creating and storing books that a user has read, wants 
 
 Users can create an account to store their books information.
 
-## :rocket: Quick Setup on Local Machine
-
-How to quickly get this project running locally:
-
-First, clone this repository:
-
-```
-git clone https://github.com/SA9102/Book-Logger.git
-```
-
-Then, navigate to the 'Book Logger' directory, install the required dependencies, and start the node server:
-
-```
-cd 'Book Logger'
-npm i
-node server.js
-```
-
-You should now be able to access the program on [localhost:3000](localhost:3000)
-
 ## :bulb: Information
 
 After doing some tutorials and learning about different concepts including routing, authentication, managing user roles and the EJS view engine, this was my first attempt in creating a Node and Express project on my own, that uses authentication and CRUD operations. Because of this, this project was challenging to make. What made it more challenging were obstacles that I did not anticipate first. For example, implementing PUT and DELETE requests was not as straightforward, since you can only send GET and POST requests from HTML forms. Nonetheless, building this application has been fun, and has given me the basic skills to create simple CRUD applications with authentication using Express. I have also learnt how to organise an Express project using the MVC pattern.
