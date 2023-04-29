@@ -6,7 +6,7 @@ Users can create an account to store their books information.
 
 [View this project on Render.](https://book-logger.onrender.com)
 
-:warning: Please note that due to the limits of Render's free tier, there may be a delay while the application first spins up (after 15 minutes of inactivity).
+:warning: Please note that due to the limits of Render's free tier, there may be a delay (around 20 seconds) when the application first spins up (after 15 minutes of inactivity).
 
 ## :bulb: Information
 
